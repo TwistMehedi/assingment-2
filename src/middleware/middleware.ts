@@ -45,3 +45,22 @@ export const authorizeRoles = (...allowedRoles: string[]) => {
     next();
   };
 };
+
+
+export const canUpdateUser = (req: Request, res: Response, next: NextFunction) => {
+
+    const loginUser = req.user;
+
+    const  id = req.params.userId;
+
+    if (!loginUser) {
+        return res.status(401).json({ success: false, message: "Unauthorized" });
+    }
+
+   if (loginUser.role === "admin") return next();
+
+
+     if (loginUser.id === id) return next();
+
+    return res.status(403).json({ success: false, message: "Forbidden: Cannot update this user" });
+};
