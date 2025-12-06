@@ -48,6 +48,8 @@ export const AuthController = {
                 { expiresIn: "1d" }
             );
 
+            res.setHeader("Authorization", `Bearer ${token}`);
+            
             return res.status(200).json({
                 success: true,
                 message: "Login successful",
