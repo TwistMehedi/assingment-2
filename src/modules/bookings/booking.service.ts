@@ -16,6 +16,7 @@ export const BookingService = {
         const endDate = new Date(rent_end_date);
 
         const timeDiff = endDate.getTime() - startDate.getTime();
+        
         const number_of_days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 
         const total_price = daily_rent_price * number_of_days;

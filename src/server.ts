@@ -5,7 +5,7 @@ import authRouter from "./modules/auth/auth.route";
 import vehicleRouter from "./modules/vehicle/vehicle.route";
 import userRouter from "./modules/user/user.route";
 import bookingRouter from "./modules/bookings/booking.route";
-
+import "./modules/cron/bookingCron"
 
 const app = express();
 const port = config.port;
