@@ -62,6 +62,15 @@ export const UserController = {
             
             const id = req.params.userId as string;
 
+            const activeBookingSatatus = await UserService.activeBookingUser(id);
+
+             if (activeBookingSatatus.rows.length > 0) {
+                return res.status(409).json({
+                    success: false,
+                    message: "Vehicle cannot be deleted because it has active bookings."
+                });
+            };
+
               await UserService.deleteUser(id)
 
              return res.status(200).json({

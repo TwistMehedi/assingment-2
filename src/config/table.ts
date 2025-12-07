@@ -37,3 +37,5 @@ export const createTable = async () => {
 
   console.log("Users table created or already exists.");
 };
+
+createTable().catch(err => console.error("DB Table Init Error:", err));

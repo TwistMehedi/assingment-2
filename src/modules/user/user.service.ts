@@ -1,4 +1,5 @@
 import pool from "../../config/database"
+import { BookingModel } from "../bookings/booking.model";
 import { UserModel } from "./user.model"
 
 
@@ -35,6 +36,13 @@ export const UserService = {
         const user = await pool.query(UserModel.deleteUser, [id]);
 
         return user.rows;
-    }
+    },
+
+    activeBookingUser: async(id: string) => {
+
+        const user = await pool.query(BookingModel.activeUserBooking, [id]);
+
+        return user;
+    },
 
 }

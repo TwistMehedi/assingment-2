@@ -17,4 +17,6 @@ pool.connect()
     console.error("❌ PostgreSQL connection failed:", err.message);
   });
 
+  
+
 export default pool;

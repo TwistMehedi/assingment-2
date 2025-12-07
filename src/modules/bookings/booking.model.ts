@@ -16,6 +16,8 @@ export const BookingModel = {
 
     updateStatus: `UPDATE bookings SET status = $1 WHERE id = $2 RETURNING *`,
 
-    activeBooking: `SELECT id FROM bookings WHERE vehicle_id = $1 AND status = 'active'`
+    activeBooking: `SELECT id FROM bookings WHERE vehicle_id = $1 AND status = 'active'`,
+
+    activeUserBooking: `SELECT id FROM bookings WHERE customer_id = $1 AND status = 'active'`
 
 }
