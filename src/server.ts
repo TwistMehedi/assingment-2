@@ -7,13 +7,14 @@ import bookingRouter from "./modules/bookings/booking.route";
 import config from "./config/config";
 
 const app = express();
+
 const port = config.port;
 
 app.use(express.json());
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/vehicles", vehicleRouter);
-
+0
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/bookings", bookingRouter);
  
