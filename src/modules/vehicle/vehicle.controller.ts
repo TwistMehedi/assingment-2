@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { VehicleService } from './vehicle.service';
 import { required } from '../../helper/required';
+import { BookingService } from '../bookings/booking.service';
 
 
 export const VehicleController = {
@@ -122,13 +123,23 @@ export const VehicleController = {
         try {
             const id = req.params.vehicleId as string;
 
+
+            const activeBooking = await BookingService.activeBooking(id);
+
+            if (activeBooking.rows.length > 0) {
+                return res.status(409).json({
+                    success: false,
+                    message: "Vehicle cannot be deleted because it has active bookings."
+                });
+            };
+
             await VehicleService.deleteVehicle(id);
 
             return res.status(200).json({
                 success: true,
                 message: "Vehicle deleted successfully"
             });
-            
+
         } catch (error: any) {
             return res.status(500).json({
                 success: false,

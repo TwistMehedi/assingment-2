@@ -34,7 +34,7 @@ export const VehicleService = {
     deleteVehicle: async(id: string)=>{
 
         const vehicle = await pool.query(VehicleModel.deleteVehicle, [id]);
-
+        
         return vehicle
          
     }

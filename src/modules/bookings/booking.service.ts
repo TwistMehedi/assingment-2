@@ -142,5 +142,12 @@ export const BookingService = {
         };
 
 
+    },
+
+    activeBooking: async(id: string)=>{
+
+           const activeBooking = await pool.query(BookingModel.activeBooking,[id]);
+
+           return activeBooking;
     }
 }
